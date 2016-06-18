@@ -2,6 +2,7 @@
  * Created by tvlenin on 17/06/16.
  *
  */
+package com;
 import java.lang.*;
 public class operations {
     //reduceEQ receive a equation and return the same reduced
