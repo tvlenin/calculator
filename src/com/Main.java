@@ -21,7 +21,7 @@ public class Main {
         GUI userInterface = new GUI();
 
 
-        //While to capture the instructions of the user
+        //While flag to capture the instructions of the user
         boolean flag = true;
         while (flag){
             System.out.println("Ingres the operation");
