@@ -40,10 +40,6 @@ public class operations {
             if(eqAux[k] != "null"){
                 result +=eqAux[k] + "|";
             }
-
-
-
-
         }
         if (result.endsWith("|")) {
             result = result.substring(0, result.length() - 1);
@@ -94,4 +90,32 @@ public class operations {
 
         return result;
     }
+    public String sumPol(String num1, String num2){
+        String newNum = num1+","+num2;
+        return reduceEQ(newNum);
+    }
+    public String substPol(String num1, String num2){
+        String result = "";
+        String [] eqAux = num2.split(",");
+        int eqLength = eqAux.length;
+        for (int i =0 ; i < eqLength ; i++){
+            if(eqAux[i].charAt(0) == '-'){
+                eqAux[i] = eqAux[i].replace("-","+");
+            }else{
+                eqAux[i] = eqAux[i].replace("+","-");
+            }
+
+        }
+        for ( int k = 0; k < eqLength; k++){
+            if(k != eqLength-1 ){
+                result +=eqAux[k] + ",";
+            }else{
+                result +=eqAux[k] ;
+            }
+        }
+
+        return sumPol(num1,result);
+    }
+
 }
+
