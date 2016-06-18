@@ -116,6 +116,54 @@ public class operations {
 
         return sumPol(num1,result);
     }
+    public String multiPol(String num1, String num2){
+        String result = "";
+        String numAux1 = "";
+        String numAux2 = "";
+        String numAux3 = "";
+        String [] eqAux1 = num1.split(",");
+        String [] eqAux2= num2.split(",");
+        int eqLength1 = eqAux1.length;
+        int eqLength2 = eqAux2.length;
+
+        for (int i = 0 ; i < eqLength1 ; i++){
+            numAux1 = eqAux1[i];
+            for (int j = 0; j < eqLength2; j++){
+                numAux2 = eqAux2[j];
+                if (numAux1.charAt(0) == numAux2.charAt(0)){numAux3 += "+";}
+                else{numAux3 += "-";}
+                numAux3+= Integer.parseInt(numAux1.substring(1,numAux1.length()-2)) * Integer.parseInt(numAux2.substring(1,numAux2.length()-2));
+                numAux3 += Integer.parseInt(numAux1.charAt(numAux1.length()-2)+"") + Integer.parseInt(numAux2.charAt(numAux2.length()-2)+"") ;
+                numAux3 += Integer.parseInt(numAux1.charAt(numAux1.length()-1)+"") + Integer.parseInt(numAux2.charAt(numAux2.length()-1)+"") ;
+                result+=numAux3+"|";
+                numAux3 = "";
+            }
+            //result+=numAux3+"|";
+        }
+
+        result=result.substring(0,result.length()-1);
+
+
+        return result;
+    }
+    public int eval (String poly, int x ,int y){
+        int result = 0;
+        int numAux = 0;
+        String [] eqAux = poly.split(",");
+        int eqLength = eqAux.length;
+
+        for(int i = 0; i < eqLength ; i++ ){
+            numAux += Integer.parseInt(eqAux[i].substring(0,eqAux[i].length()-2)) * (int)Math.pow(x,Integer.parseInt(eqAux[i].charAt(eqAux[i].length()-2)+""))* (int)Math.pow(y,Integer.parseInt(eqAux[i].charAt(eqAux[i].length()-1)+""));
+
+            result +=numAux;
+            numAux = 0;
+        }
+
+
+
+        return result;
+    }
+
 
 }
 
