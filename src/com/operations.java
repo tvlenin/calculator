@@ -30,11 +30,7 @@ public class operations {
                     }
 
                 }
-
-
-
             }
-
         }
         for ( int k = 0; k < eqLength; k++){
             if(eqAux[k] != "null"){
