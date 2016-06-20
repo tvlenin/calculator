@@ -40,7 +40,7 @@ public class GUI extends  JFrame{
 
         super("Polynomial Calculator");
         super.setContentPane(panelMain);
-        super.setBounds(200,100,500,350);                         //The bounds start(X,Y) bounds(Y,X)
+        super.setBounds(200,100,475,300);                         //The bounds start(X,Y) bounds(X,Y)
         super.setResizable(false);
         super.setDefaultCloseOperation(super.EXIT_ON_CLOSE);
         super.setVisible(true);
@@ -131,6 +131,12 @@ public class GUI extends  JFrame{
                 inputData=inputData+"|";
                 dataLabel.setText(inputData);
 
+            }
+        });
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clear();
             }
         });
         //listeners for the keys
@@ -274,12 +280,13 @@ public class GUI extends  JFrame{
                 plotter sinObject = new plotter(inputData,10,10);
                 double y;
                 for ( double x = -10; x<=10; x+=0.01 ) {
-                    //EVALUATE THE CORRECTO FUNCTION
+                                                    //EVALUATE THE CORRECT FUNCTION HERE
                     y = Math.sin(x); //equation
                     sinObject.drawPoint(x,y);
                 }
             }
         });
+
     }
     //every listener calls this method, which selects the propper action
     private void keyPressed(char key){
