@@ -80,4 +80,39 @@ public class op {
 
 
 
+
+
+
+    public boolean validate(String pData){
+        boolean ans = true;
+        String [] a = pData.split(",");
+        String [] term;
+        for(int i=0; i<a.length;i++){
+            term=(a[i]).split(" ");
+            if( term.length != 4){
+                ans=false;
+                break;
+            }
+            else if (term[0].compareTo("+")!=0 && term[0].compareTo("-")!=0 ){
+                ans=false;
+                break;
+            }
+            else if( !(isNumeric(term[1])) || !(isNumeric(term[2])) || !(isNumeric(term[3]))  ){
+                ans=false;
+                break;
+            }
+        }
+        return ans;
+    }
+
+    private static boolean isNumeric(String str){
+        try {
+            double d = Double.parseDouble(str);
+        }catch(NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+
 }

@@ -18,7 +18,17 @@ public class Main {
         //f.pack();                                           //sizes the frame so that all its contents are at or above their preferred sizes
         //f.setVisible(true);                                 //
 
-        GUI userInterface = new GUI();
+
+
+
+        op o = new op();
+        if(o.validate("- 1 2 3,- 2 4 5,+ 1 4 5")){
+            System.out.println("Sí sirve");
+        }else{
+            System.out.println("No sirve");
+        }
+
+        /*GUI userInterface = new GUI();
 
 
         //While flag to capture the instructions of the user
@@ -29,7 +39,7 @@ public class Main {
             String s = scan.next();
             System.out.println(s);
             if(s.contains("exit")){flag=false;System.out.println("Command promt finished");}
-        }
+        }*/
 
     }
 }
