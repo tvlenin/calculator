@@ -4,6 +4,37 @@ import java.lang.*;
  * Created by tvlenin on 20/06/16.
  */
 public class op {
+
+    public String reduce(String pData){
+        String ans="";
+        String []  equ = pData.split(",");
+        String [] data1;
+        String [] data2;
+        for(int i=0; i<equ.length; i++){
+            for(int j =i+1; j<equ.length; j++){
+                data1=(equ[i]).split(" ");
+                data2=(equ[j]).split(" ");
+                if(equ[j]=="null"||equ[i]=="null"){
+                    continue;
+                }
+                else if( data1[2].compareTo(data2[2])==0 &&  (data1[3].compareTo(data2[3])==0)){
+                //else if(data1[2]==data2[2] && data1[3]==data2[3]){
+                    equ[j]="null";
+                    equ[i]=(getSum(data1[0]+data1[1],data2[0]+data2[1])+ " " +data1[2]+" "+ data1[3]);
+                    i=0;
+                }
+            }
+        }
+        for(int i=0;i<equ.length;i++){
+            if(equ[i]=="null"){
+                continue;
+            }else{
+                ans=ans+equ[i];
+            }
+        }
+        return ans;
+    }
+
     public String reduceEQ (String eq){
         String result = "";
         String []  equ = eq.split(",");
