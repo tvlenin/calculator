@@ -303,20 +303,6 @@ public class GUI extends  JFrame{
             }
         });
 
-        plotButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                plotter sinObject = new plotter(term,10,10);
-                double y;
-                for ( double x = -10; x<=10; x+=0.01 ) {
-                                                    //EVALUATE THE CORRECT FUNCTION HERE
-                    //y = operations.eval(term,0,0);
-                    y = Math.sin(x); //equation
-                    sinObject.drawPoint(x,y);
-                }
-            }
-        });
-
 
 
     }
@@ -474,19 +460,18 @@ public class GUI extends  JFrame{
         if(lastOpe== ""){
             return;
         }
-        boolean flag=false;
         if(lastOpe=="e"){
             int num1 = Integer.parseInt(term.split(" ")[0]);
             int num2 = Integer.parseInt(term.split(" ")[1]);
             if(term.length()>2 ) {
-                flag=true;
                 term= (operations.eval(operations.addSym(terms), num1, num2) +"");
                 dataLabel.setText(term);
+                return;
             }
         }
         term=operations.delSpace(term.replace("|",","));
         term = operations.addSym(term);
-        if ( operations.validate(term) && flag==false){
+        if ( operations.validate(term)){
             if(lastOpe=="+") {
                 term = operations.sumPol(terms,term).replace("+ ","");
             }else if(lastOpe=="-"){
@@ -506,7 +491,6 @@ public class GUI extends  JFrame{
     }
 
     private void evaluate(){
-        System.out.println("SI");
         lastOpe="e";
         terms=term;
         term="";
