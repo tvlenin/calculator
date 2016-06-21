@@ -397,10 +397,13 @@ public class GUI extends  JFrame{
     //Methods for each of the operations
     private void addition(){
         term=operations.delSpace(term.replace("|",","));
+        term = operations.addSym(term);
         if ( operations.validate(term)){
-            terms = term;
-            term = "";
-//            term = operations.getSum();
+            lastOpe="+";
+            if(terms==""){
+                terms=term;
+                term="";
+            }
             dataLabel.setText(term);
         }else{
             term = "Syntax error";
@@ -423,11 +426,17 @@ public class GUI extends  JFrame{
         }
         if(flag){
             term=operations.delSpace(term.replace("|",","));
+            term = operations.addSym(term);
             if ( operations.validate(term)){
-                terms = term + "-";
-                term = "";
+                lastOpe="-";
+                if(terms==""){
+                    terms=term;
+                    term="";
+                }
+                dataLabel.setText(term);
             }else{
                 term = "Syntax error";
+                dataLabel.setText(term);
             }
         }
         dataLabel.setText(term);
@@ -462,13 +471,24 @@ public class GUI extends  JFrame{
             return;
         }
         term=operations.delSpace(term.replace("|",","));
+        term = operations.addSym(term);
         if ( operations.validate(term)){
-            //terms = operations.getSum();
-            // terms = operations.getMul();
-            //term=""
-            //term = "";
-//            term = operations.getMul();
-            dataLabel.setText(term);
+            if(lastOpe=="+") {
+                term = operations.sumPol(terms,term).replace("+ ","");
+                System.out.println(term);
+            }
+            else if(lastOpe=="-"){
+                term = operations.substPol(terms,term).replace("+ ","");
+                System.out.println(term);
+            }else if (lastOpe=="*"){
+
+            }
+
+
+            if(term==""){
+                dataLabel.setText("");
+            }else{
+                dataLabel.setText(term.replace("," , " | "));}
         }else{
             term = "Syntax error";
             dataLabel.setText(term);

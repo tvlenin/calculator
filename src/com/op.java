@@ -26,12 +26,24 @@ public class op {
                 }
             }
         }
+
         for(int i=0;i<equ.length;i++){
-            if(equ[i]=="null"){
+            if(equ[i]=="null" || equ[i].contains("null")){
                 continue;
             }else{
-                ans=ans+equ[i];
+                if(i==0){
+                    ans=ans+equ[i];
+                }else{
+                    ans=ans+","+equ[i];
+
+                }
             }
+        }
+        if(ans!="" && ans.charAt(0)==','){
+            ans = ans.substring(1,ans.length());
+        }
+        else if (ans=="|"){
+            ans="";
         }
         return ans;
     }
@@ -77,7 +89,6 @@ public class op {
     public String insertspace(String pData){
         String ans;
         ans = pData;
-        System.out.print(ans);
         return ans;
     }
 
@@ -119,7 +130,10 @@ public class op {
         int len = print.length;
         String result = "";
         for (int i = 0; i < len; i++){
-            if(i == 0){
+            if(len==1){
+                result += print[i].substring(0,print[i].length());
+            }
+            else if(i == 0){
                 result += print[i].substring(0,print[i].length()-1)+",";
             }
             else if (i != len-1)
@@ -167,21 +181,24 @@ public class op {
         String [] numAux;
         for (int i = 0 ; i < p.length;i++){
             numAux = p[i].split(" ");
-            System.out.println(p[i]);
+            //System.out.println(p[i]);
             if (numAux[0].compareTo("-") ==0 || numAux[0].compareTo("+") ==0){
-
+                continue;
             }
-            else{p[i] = "+"+p[i] ;System.out.println(p[i]);}
+            else{
+                p[i] = "+ "+p[i] ;
+                //System.out.println(p[i]);
+            }
         }
         String resul = "";
         for (int i = 0 ; i < p.length;i++){
             if (p[i] == "null"){
-
+                continue;
             }else{
-                resul += p[i] + "|";
+                resul += p[i] + ",";
             }
         }
-        return resul;
+        return resul.substring(0,resul.length()-1);
 
     }
 
