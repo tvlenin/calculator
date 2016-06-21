@@ -220,6 +220,25 @@ public class op {
         return result;
     }
 
+    public int eval (String poly, int x ,int y){
+        int result = 0;
+        int numAux = 0;
+        String [] eqAux = poly.split(",");
+        int eqLength = eqAux.length;
+        String [] txtAux;
+        for(int i = 0; i < eqLength ; i++ ){
+            txtAux = eqAux[i].split(" ");
+            numAux += Integer.parseInt(txtAux[0]+txtAux[1]) * (int)Math.pow(x,Integer.parseInt(txtAux[2]))* (int)Math.pow(y,Integer.parseInt(txtAux[3]));
+
+            result +=numAux;
+            numAux = 0;
+        }
+
+
+
+        return result;
+    }
+
 
 
 
