@@ -5,6 +5,7 @@ import java.lang.*;
  */
 public class op {
 
+
     public String reduce(String pData){
         String ans="";
         String []  equ = pData.split(",");
