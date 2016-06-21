@@ -28,7 +28,7 @@ public class op {
         }
 
         for(int i=0;i<equ.length;i++){
-            if(equ[i]=="null" || equ[i].contains("null")){
+            if(equ[i]=="null" || equ[i].contains("null")|| (equ[i].split(" ")[1].compareTo("0")==0 )){
                 continue;
             }else{
                 if(i==0){
@@ -115,7 +115,7 @@ public class op {
         return ans;
     }
 
-    private static boolean isNumeric(String str){
+    public static boolean isNumeric(String str){
         try {
             double d = Double.parseDouble(str);
         }catch(NumberFormatException nfe) {
@@ -242,7 +242,6 @@ public class op {
         for(int i = 0; i < eqLength ; i++ ){
             txtAux = eqAux[i].split(" ");
             numAux += Integer.parseInt(txtAux[0]+txtAux[1]) * (int)Math.pow(x,Integer.parseInt(txtAux[2]))* (int)Math.pow(y,Integer.parseInt(txtAux[3]));
-
             result +=numAux;
             numAux = 0;
         }

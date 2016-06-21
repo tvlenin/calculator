@@ -310,6 +310,7 @@ public class GUI extends  JFrame{
                 double y;
                 for ( double x = -10; x<=10; x+=0.01 ) {
                                                     //EVALUATE THE CORRECT FUNCTION HERE
+                    //y = operations.eval(term,0,0);
                     y = Math.sin(x); //equation
                     sinObject.drawPoint(x,y);
                 }
@@ -473,9 +474,19 @@ public class GUI extends  JFrame{
         if(lastOpe== ""){
             return;
         }
+        boolean flag=false;
+        if(lastOpe=="e"){
+            int num1 = Integer.parseInt(term.split(" ")[0]);
+            int num2 = Integer.parseInt(term.split(" ")[1]);
+            if(term.length()>2 ) {
+                flag=true;
+                term= (operations.eval(operations.addSym(terms), num1, num2) +"");
+                dataLabel.setText(term);
+            }
+        }
         term=operations.delSpace(term.replace("|",","));
         term = operations.addSym(term);
-        if ( operations.validate(term)){
+        if ( operations.validate(term) && flag==false){
             if(lastOpe=="+") {
                 term = operations.sumPol(terms,term).replace("+ ","");
             }else if(lastOpe=="-"){
@@ -483,6 +494,7 @@ public class GUI extends  JFrame{
             }else if (lastOpe=="*"){
                 term = operations.multiPol(terms,term).replace("+ ","");
             }
+
             if(term==""){
                 dataLabel.setText("");
             }else{
@@ -493,7 +505,13 @@ public class GUI extends  JFrame{
         }
     }
 
-    private void evaluate(){}
+    private void evaluate(){
+        System.out.println("SI");
+        lastOpe="e";
+        terms=term;
+        term="";
+        dataLabel.setText(term);
+    }
 
 
 
