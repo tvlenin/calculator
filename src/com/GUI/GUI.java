@@ -2,7 +2,7 @@ package com.GUI;
 
 import javax.swing.*;
 import java.awt.event.*;
-import com.GUI.plotter;
+import com.op;
 
 /**
  * Created by abrahamon on 18/06/16.
@@ -34,7 +34,9 @@ public class GUI extends  JFrame{
     private JLabel dataLabel;
     private JButton plotButton;
 
-    private String inputData;
+    private String term;
+    private String terms;
+    op operations;
 
     public GUI(){
 
@@ -44,99 +46,124 @@ public class GUI extends  JFrame{
         super.setResizable(false);
         super.setDefaultCloseOperation(super.EXIT_ON_CLOSE);
         super.setVisible(true);
-
-        inputData="";
+        operations = new op();
+        term ="";
+        terms ="";
 
         //listeners for each botton
         a0Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"0";
-                dataLabel.setText(inputData);
+                keyPressed('0');
             }
         });
         a1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"1";
-                dataLabel.setText(inputData);
+                keyPressed('1');
             }
         });
         a2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"2";
-                dataLabel.setText(inputData);
+                keyPressed('2');
             }
         });
         a3Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"3";
-                dataLabel.setText(inputData);
+                keyPressed('3');
             }
         });
         a4Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"4";
-                dataLabel.setText(inputData);
+                keyPressed('4');
             }
         });
         a5Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"5";
-                dataLabel.setText(inputData);
+                keyPressed('5');
             }
         });
         a6Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"6";
-                dataLabel.setText(inputData);
+                keyPressed('6');
             }
         });
         a7Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"7";
-                dataLabel.setText(inputData);
+                keyPressed('7');
             }
         });
         a8Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"8";
-                dataLabel.setText(inputData);
+                keyPressed('8');
             }
         });
         a9Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"9";
-                dataLabel.setText(inputData);
+                keyPressed('9');
             }
         });
         espaceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+" ";
-                dataLabel.setText(inputData);
+                keyPressed('s');
             }
         });
         barButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputData=inputData+"|";
-                dataLabel.setText(inputData);
+                keyPressed('|');
 
             }
         });
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clear();
+                keyPressed('c');
+            }
+        });
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                keyPressed('+');
+            }
+        });
+        susButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                keyPressed('-');
+            }
+        });
+        mulButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                keyPressed('*');
+            }
+        });
+        eButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                keyPressed('e');
+            }
+        });
+        delButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                keyPressed('d');
+            }
+        });
+        equalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                keyPressed('=');
             }
         });
         //listeners for the keys
@@ -214,7 +241,7 @@ public class GUI extends  JFrame{
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
-                GUI.this.keyPressed(e.getKeyChar());
+                GUI.this.keyPressed('s');
             }
         });
         barButton.addKeyListener(new KeyAdapter() {
@@ -277,7 +304,7 @@ public class GUI extends  JFrame{
         plotButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                plotter sinObject = new plotter(inputData,10,10);
+                plotter sinObject = new plotter(term,10,10);
                 double y;
                 for ( double x = -10; x<=10; x+=0.01 ) {
                                                     //EVALUATE THE CORRECT FUNCTION HERE
@@ -287,56 +314,68 @@ public class GUI extends  JFrame{
             }
         });
 
+
+
     }
     //every listener calls this method, which selects the propper action
     private void keyPressed(char key){
+        if(term=="Syntax error"){term="";}
         if(key=='0'){
-            inputData=inputData+"0";
-            dataLabel.setText(inputData);
+            term = term +"0";
+            dataLabel.setText(term);
         }
         else if(key=='1'){
-            inputData=inputData+"1";
-            dataLabel.setText(inputData);
+            term = term +"1";
+            dataLabel.setText(term);
         }
         else if(key=='2'){
-            inputData=inputData+"2";
-            dataLabel.setText(inputData);
+            term = term +"2";
+            dataLabel.setText(term);
         }
         else if(key=='3'){
-            inputData=inputData+"3";
-            dataLabel.setText(inputData);
+            term = term +"3";
+            dataLabel.setText(term);
         }
         else if(key=='4'){
-            inputData=inputData+"4";
-            dataLabel.setText(inputData);
+            term = term +"4";
+            dataLabel.setText(term);
         }
         else if(key=='5'){
-            inputData=inputData+"5";
-            dataLabel.setText(inputData);
+            term = term +"5";
+            dataLabel.setText(term);
         }
         else if(key=='6'){
-            inputData=inputData+"6";
-            dataLabel.setText(inputData);
+            term = term +"6";
+            dataLabel.setText(term);
         }
         else if(key=='7'){
-            inputData=inputData+"7";
-            dataLabel.setText(inputData);
+            term = term +"7";
+            dataLabel.setText(term);
         }
         else if(key=='8'){
-            inputData=inputData+"8";
-            dataLabel.setText(inputData);
+            term = term +"8";
+            dataLabel.setText(term);
         }
         else if(key=='9'){
-            inputData=inputData+"9";
-            dataLabel.setText(inputData);
+            term = term +"9";
+            dataLabel.setText(term);
         }
         else if(key=='s'){
-            inputData=inputData+" ";
-            dataLabel.setText(inputData);
+            term = term +" ";
+            dataLabel.setText(term);
         }
         else if(key=='|'){
-            inputData=inputData+"|";
-            dataLabel.setText(inputData);
+            term = term +"|";
+            dataLabel.setText(term);
+        }
+        else if(key=='+'){
+            addition();
+        }
+        else if(key=='-'){
+            subtraction();
+        }
+        else if(key=='*'){
+            multiplication();
         }
         else if(key=='E' || key=='e'){
             evaluate();
@@ -347,32 +386,73 @@ public class GUI extends  JFrame{
         else if(key=='C' || key=='c' ){
             clear();
         }
-        else if(key=='*'){
-            multiplication();
-        }
-        else if(key=='+'){
-            addition();
-        }
-        else if(key=='-'){
-            substraction();
-        }
         else if(key=='='){
             getResult();
         }
-
         else{System.out.println("Unknown: "+key);}
     }
 
     //Methods for each of the operations
-    private void delete(){}
-    private void clear(){
-        inputData="";
+    private void addition(){
+        if ( operations.validate(term)){
+            terms = term + "+";
+            term = "";
+//            term = operations.getSum();
+            dataLabel.setText(term);
+        }else{
+            term = "Syntax error";
+            dataLabel.setText(term);
+        }
+    }
+
+    private void subtraction(){
+        boolean flag= true;
+        if(term=="" ){
+            term = term +"-";
+            flag=false;
+        }else{
+            for(int i=0;i<term.length();i++) {
+                if(i==term.length()-2 && term.charAt(i)=='|' || i==term.length()-1 && term.charAt(i)=='|'){
+                    term = term +"-";
+                    flag= false;
+                }
+            }
+        }
+        if(flag){
+            if ( operations.validate(term)){
+                terms = term + "-";
+                term = "";
+            }else{
+                term = "Syntax error";
+            }
+        }
+        dataLabel.setText(term);
+    }
+
+    private void multiplication(){
+        if ( operations.validate(term)){
+            terms = term + "*";
+            term = "";
+            dataLabel.setText(term);
+        }else{
+            term = "Syntax error";
+            dataLabel.setText(term);
+        }
+    }
+
+    private void delete(){
+        term="";
         dataLabel.setText("0");
     }
+    private void clear(){
+        term ="";
+        terms="";
+        dataLabel.setText("0");
+    }
+
+
+
     private void evaluate(){}
-    private void addition(){}
-    private void substraction(){}
-    private void multiplication(){}
     private void getResult(){}
 
 

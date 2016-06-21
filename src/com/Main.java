@@ -20,17 +20,17 @@ public class Main {
 
 
 
-
         op o = new op();
         //probar la verificacion
-        //if(o.validate("- 1 2 3,- 2 4 5,+ 1 4 5")){
-        //    System.out.println("Sí sirve");
-        //}else{
-        //    System.out.println("No sirve");
-        //}
-        System.out.println(o.reduce("- 1 2 2,+ 2 2 2,+ 3 2 2,- 3 2 2"));
+        if(o.validate("- 1 2 3,- 2 4 5,+ 1 4 5")){
+            System.out.println("Sí sirve");
+        }else{
+            System.out.println("No sirve");
+        }
 
-        /*GUI userInterface = new GUI();
+        //System.out.println(o.reduce("- 1 2 2,+ 2 2 2,+ 3 2 2,- 3 2 2"));
+
+        GUI userInterface = new GUI();
 
 
         //While flag to capture the instructions of the user
@@ -41,7 +41,7 @@ public class Main {
             String s = scan.next();
             System.out.println(s);
             if(s.contains("exit")){flag=false;System.out.println("Command promt finished");}
-        }*/
+        }
 
     }
 }

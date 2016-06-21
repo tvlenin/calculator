@@ -35,49 +35,6 @@ public class op {
         return ans;
     }
 
-    public String reduceEQ (String eq){
-        String result = "";
-        String []  equ = eq.split(",");
-        String [] eqAux;
-        String [] eqAux2;
-        int eqLength = equ.length;
-
-        for (int i = 0 ; i < eqLength-1; i++) {
-            eqAux = equ[i].split(" ");
-            for (int j = i+1 ; j < eqLength-2 ;j++){
-                if (equ[j] != "null" && equ[i] != "null" ){
-                    eqAux2 = equ[j].split(" ");
-                    System.out.println(equ[i]);
-                    System.out.println(equ[j]);
-                    System.out.println(eqAux[2]);
-                    System.out.println(eqAux2[2]);
-                    System.out.println(eqAux[3]);
-                    System.out.println(eqAux2[3]);
-                    System.out.println(eqAux2[2]);
-                    if (eqAux[2].compareTo(eqAux2[2]) == 0 && eqAux[3].compareTo(eqAux2[3]) == 0){
-                        equ[i] = getSum(eqAux[0]+eqAux[1],eqAux2[0]+eqAux2[1])+" "+eqAux[2]+" "+eqAux[3];
-                        eqAux = equ[j].split(" ");
-                        equ[j] = "null";
-
-                    }
-
-                }
-            }
-
-        }
-        for ( int k = 0; k < eqLength; k++){
-            if(equ[k] != "null"){
-                result +=equ[k] + "|";
-            }
-        }
-        if (result.endsWith("|")) {
-            result = result.substring(0, result.length() - 1);
-        }
-
-
-
-        return result;
-    }
     public String getSum(String num1, String num2){
 
         String result = "";
@@ -113,20 +70,19 @@ public class op {
 
         if(flag)
             result ="null";
-
-
-
-
-
         return result;
     }
 
-
-
-
-
+    public String insertspace(String pData){
+        String ans;
+        ans = pData;
+        System.out.print(ans);
+        return ans;
+    }
 
     public boolean validate(String pData){
+        pData= pData.replace('|',',');
+        System.out.println(pData);
         boolean ans = true;
         String [] a = pData.split(",");
         String [] term;

@@ -6,10 +6,13 @@ public class main{
     String eq1=  "123|245|145";
     String eq2 =  "143|225|144";
     public static void main(String[] args) {
+
+
         String eq2 =  "+ 100 2 5,+ 2 2 5,- 3 3 5,- 2 4 3,+ 3 4 3";
         String eq1 =  "+143|+122|+144";
         String eq3 =  "+122|-523";
         op ope = new op();
+
         //System.out.println(ope.reduceEQ(eq2));
        // System.out.println(ope.getSum("-1","+2"));
 
