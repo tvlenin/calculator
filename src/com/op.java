@@ -131,4 +131,58 @@ public class op {
         return result;
     }
 
+    public String sumPol(String num1, String num2){
+        String newNum = num1+","+num2;
+        return reduce(newNum);
+    }
+
+    public String substPol(String num1, String num2){
+        String result = "";
+        String [] eqAux = num2.split(",");
+        int eqLength = eqAux.length;
+        String [] numAux;
+        for (int i =0 ; i < eqLength ; i++){
+            numAux = eqAux[i].split(" ");
+            if(numAux[0].compareTo("-") == 0){
+                numAux[0] = "+";
+            }else{
+                numAux[0] = "-";
+            }
+            eqAux[i] = numAux[0]+" "+numAux[1]+" "+numAux[2]+" "+numAux[3];
+        }
+        for ( int k = 0; k < eqLength; k++){
+            if(k != eqLength-1 ){
+                result +=eqAux[k] + ",";
+            }else{
+                result +=eqAux[k] ;
+            }
+        }
+        //return result;
+       return sumPol(num1,result);
+    }
+
+    public String addSym(String num1){
+        //Agrega el signo de positivo a las que no lo contienen
+        String [] p = num1.split(",");
+        String [] numAux;
+        for (int i = 0 ; i < p.length;i++){
+            numAux = p[i].split(" ");
+            System.out.println(p[i]);
+            if (numAux[0].compareTo("-") ==0 || numAux[0].compareTo("+") ==0){
+
+            }
+            else{p[i] = "+"+p[i] ;System.out.println(p[i]);}
+        }
+        String resul = "";
+        for (int i = 0 ; i < p.length;i++){
+            if (p[i] == "null"){
+
+            }else{
+                resul += p[i] + "|";
+            }
+        }
+        return resul;
+
+    }
+
 }
