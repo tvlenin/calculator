@@ -130,7 +130,7 @@ public class op {
         int len = print.length;
         String result = "";
         for (int i = 0; i < len; i++){
-            if(len==1){
+            if (len ==1){
                 result += print[i].substring(0,print[i].length());
             }
             else if(i == 0){
@@ -201,5 +201,39 @@ public class op {
         return resul.substring(0,resul.length()-1);
 
     }
+
+    public String multiPol(String num1, String num2){
+        String result = "";
+        String [] numAux1 ;
+        String [] numAux2 ;
+        String numAux3 = "";
+        String [] eqAux1 = num1.split(",");
+        String [] eqAux2= num2.split(",");
+        int eqLength1 = eqAux1.length;
+        int eqLength2 = eqAux2.length;
+
+        for (int i = 0 ; i < eqLength1 ; i++){
+            numAux1 = eqAux1[i].split(" ");
+            for (int j = 0; j < eqLength2; j++){
+                numAux2 = eqAux2[j].split(" ");
+                if (numAux1[0].compareTo(numAux2[0]) == 0){numAux3 += "+ ";}
+                else{numAux3 += "- ";}
+                numAux3 += Integer.parseInt(numAux1[1]+"") * Integer.parseInt(numAux2[1]+"") +" ";
+                numAux3 += Integer.parseInt(numAux1[2]+"") + Integer.parseInt(numAux2[2]+"" )+" ";
+                numAux3 += Integer.parseInt(numAux1[3]+"") + Integer.parseInt(numAux2[3]+"") ;
+                result+=numAux3+",";
+                numAux3 = "";
+            }
+            //result+=numAux3+"|";
+        }
+
+        result=result.substring(0,result.length()-1);
+
+
+        return result;
+    }
+
+
+
 
 }

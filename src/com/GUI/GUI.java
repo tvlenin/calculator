@@ -444,10 +444,13 @@ public class GUI extends  JFrame{
 
     private void multiplication(){
         term=operations.delSpace(term.replace("|",","));
+        term = operations.addSym(term);
         if ( operations.validate(term)){
-            terms = term;
-            term = "";
-//            term = operations.getMul();
+            lastOpe="*";
+            if(terms==""){
+                terms=term;
+                term="";
+            }
             dataLabel.setText(term);
         }else{
             term = "Syntax error";
@@ -475,16 +478,11 @@ public class GUI extends  JFrame{
         if ( operations.validate(term)){
             if(lastOpe=="+") {
                 term = operations.sumPol(terms,term).replace("+ ","");
-                System.out.println(term);
-            }
-            else if(lastOpe=="-"){
+            }else if(lastOpe=="-"){
                 term = operations.substPol(terms,term).replace("+ ","");
-                System.out.println(term);
             }else if (lastOpe=="*"){
-
+                term = operations.multiPol(terms,term).replace("+ ","");
             }
-
-
             if(term==""){
                 dataLabel.setText("");
             }else{
