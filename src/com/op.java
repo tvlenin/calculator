@@ -83,7 +83,6 @@ public class op {
 
     public boolean validate(String pData){
         pData= pData.replace('|',',');
-        System.out.println(pData);
         boolean ans = true;
         String [] a = pData.split(",");
         String [] term;
@@ -115,6 +114,7 @@ public class op {
     }
 
     public String delSpace(String txt){
+        if(txt==""){return "";}
         String [] print = txt.split(",");
         int len = print.length;
         String result = "";
@@ -128,7 +128,6 @@ public class op {
             else
                 result += print[i].substring(1,print[i].length());
         }
-
         return result;
     }
 

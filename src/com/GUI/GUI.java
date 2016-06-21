@@ -36,6 +36,7 @@ public class GUI extends  JFrame{
 
     private String term;
     private String terms;
+    private String lastOpe;
     op operations;
 
     public GUI(){
@@ -49,6 +50,7 @@ public class GUI extends  JFrame{
         operations = new op();
         term ="";
         terms ="";
+        lastOpe= "";
 
         //listeners for each botton
         a0Button.addActionListener(new ActionListener() {
@@ -394,8 +396,9 @@ public class GUI extends  JFrame{
 
     //Methods for each of the operations
     private void addition(){
+        term=operations.delSpace(term.replace("|",","));
         if ( operations.validate(term)){
-            terms = term + "+";
+            terms = term;
             term = "";
 //            term = operations.getSum();
             dataLabel.setText(term);
@@ -407,8 +410,8 @@ public class GUI extends  JFrame{
 
     private void subtraction(){
         boolean flag= true;
-        if(term=="" ){
-            term = term +"-";
+        if(term=="" || term=="Syntax error"){
+            term = term+"-" ;
             flag=false;
         }else{
             for(int i=0;i<term.length();i++) {
@@ -419,6 +422,7 @@ public class GUI extends  JFrame{
             }
         }
         if(flag){
+            term=operations.delSpace(term.replace("|",","));
             if ( operations.validate(term)){
                 terms = term + "-";
                 term = "";
@@ -430,9 +434,11 @@ public class GUI extends  JFrame{
     }
 
     private void multiplication(){
+        term=operations.delSpace(term.replace("|",","));
         if ( operations.validate(term)){
-            terms = term + "*";
+            terms = term;
             term = "";
+//            term = operations.getMul();
             dataLabel.setText(term);
         }else{
             term = "Syntax error";
@@ -448,12 +454,29 @@ public class GUI extends  JFrame{
         term ="";
         terms="";
         dataLabel.setText("0");
+        lastOpe= "";
     }
 
-
+    private void getResult(){
+        if(lastOpe== ""){
+            return;
+        }
+        term=operations.delSpace(term.replace("|",","));
+        if ( operations.validate(term)){
+            //terms = operations.getSum();
+            // terms = operations.getMul();
+            //term=""
+            //term = "";
+//            term = operations.getMul();
+            dataLabel.setText(term);
+        }else{
+            term = "Syntax error";
+            dataLabel.setText(term);
+        }
+    }
 
     private void evaluate(){}
-    private void getResult(){}
+
 
 
 }

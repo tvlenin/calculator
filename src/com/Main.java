@@ -20,13 +20,13 @@ public class Main {
 
 
 
-        op o = new op();
+        //op o = new op();
         //probar la verificacion
-        if(o.validate("- 1 2 3,- 2 4 5,+ 1 4 5")){
-            System.out.println("Sí sirve");
-        }else{
-            System.out.println("No sirve");
-        }
+        //if(o.validate("- 1 2 3,- 2 4 5,+ 1 4 5")){
+        //    System.out.println("Sí sirve");
+        //}else{
+        //    System.out.println("No sirve");
+        //}
 
         //System.out.println(o.reduce("- 1 2 2,+ 2 2 2,+ 3 2 2,- 3 2 2"));
 
