@@ -113,5 +113,22 @@ public class op {
         return true;
     }
 
+    public String delSpace(String txt){
+        String [] print = txt.split(",");
+        int len = print.length;
+        String result = "";
+        for (int i = 0; i < len; i++){
+            if(i == 0){
+                result += print[i].substring(0,print[i].length()-1)+",";
+            }
+            else if (i != len-1)
+                result += print[i].substring(1,print[i].length()-1)+",";
+
+            else
+                result += print[i].substring(1,print[i].length());
+        }
+
+        return result;
+    }
 
 }
